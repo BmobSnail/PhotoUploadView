@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/partition_big"
+    android:orientation="horizontal">
+
+    <RadioButton
+        android:id="@+id/dialog_pic_camera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/partition_small"
+        android:background="@drawable/border_gray"
+        android:button="@null"
+        android:paddingBottom="@dimen/partition_normal"
+        android:paddingLeft="@dimen/partition_big"
+        android:paddingRight="@dimen/partition_big"
+        android:paddingTop="@dimen/partition_normal"
+        android:text="@string/string_camera"
+        android:textColor="@color/text_120"
+        android:textSize="@dimen/textSize_normal" />
+
+    <RadioButton
+        android:id="@+id/dialog_pic_album"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/partition_small"
+        android:background="@drawable/border_gray"
+        android:button="@null"
+        android:paddingBottom="@dimen/partition_normal"
+        android:paddingLeft="@dimen/partition_big"
+        android:paddingRight="@dimen/partition_big"
+        android:paddingTop="@dimen/partition_normal"
+        android:text="@string/string_album"
+        android:textColor="@color/text_120"
+        android:textSize="@dimen/textSize_normal" />
+
+    <RadioButton
+        android:id="@+id/dialog_pic_default"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/partition_small"
+        android:background="@drawable/border_gray"
+        android:button="@null"
+        android:paddingBottom="@dimen/partition_normal"
+        android:paddingLeft="@dimen/partition_big"
+        android:paddingRight="@dimen/partition_big"
+        android:paddingTop="@dimen/partition_normal"
+        android:text="@string/string_default"
+        android:textColor="@color/text_120"
+        android:textSize="@dimen/textSize_normal" />
+
+</RadioGroup>

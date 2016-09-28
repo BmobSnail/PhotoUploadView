@@ -1,0 +1,15 @@
+<resources>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+
+	<dimen name="textSize_normal">12sp</dimen>
+	<dimen name="textSize_big">14sp</dimen>
+
+	<dimen name="partition_small">5dp</dimen>
+	<dimen name="partition_normal">10dp</dimen>
+	<dimen name="partition_big">15dp</dimen>
+	<dimen name="partition_so_large">35dp</dimen>
+
+	<dimen name="line_height">0.5dp</dimen>
+
+</resources>
