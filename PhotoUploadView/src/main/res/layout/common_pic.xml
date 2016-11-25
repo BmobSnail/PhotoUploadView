@@ -23,7 +23,7 @@
             android:layout_gravity="center"
             android:padding="10dp"
             android:visibility="gone"
-            android:background="@android:color/holo_red_dark"/>
+            android:background="@mipmap/icon_photo_view_resend"/>
 
         <ImageView
             android:id="@+id/pic_cancel"
@@ -31,7 +31,7 @@
             android:layout_height="20dp"
             android:layout_gravity="top|right"
             android:padding="5dp"
-            android:background="@android:color/holo_green_dark"/>
+            android:background="@mipmap/icon_photo_view_cancel"/>
 
 
         <ProgressBar
