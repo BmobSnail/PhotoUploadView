@@ -1,4 +1,4 @@
-package upload.example.administrator.picuploadtest;
+package upload.example;
 
 import android.app.Application;
 

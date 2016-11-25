@@ -1,4 +1,4 @@
-package upload.example.administrator.picuploadtest;
+package upload.example;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,7 +6,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import com.example.administrator.picuploadtest.R;
+import com.example.R;
 import upload.utils.UploadPicHelper;
 import upload.view.PictureUploadView;
 import java.util.HashMap;
