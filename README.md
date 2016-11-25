@@ -1,10 +1,10 @@
-# ImageUploadLibrary 1.0
+# PhotoUploadView 1.0.0
 
 @(图片选择、上传控件)
 **PhotoUploadView **是一个图片选择、上传的自定义控件，通过精心的设计与技术实现，简化实现逻辑，让开发更效率简单。
 
 -------------------
-####ImageUploadLibrary:1.0：
+####PhotoUploadView:1.0.0：
 - 1.支持设置选择个数
 - 2.是否显示上传进度（一般需求分两种）：
 	  第一种，选择完图片就单张遍历上传，上传过程可能会导致某一张上传失败（需要显示上传结果的）
@@ -56,7 +56,7 @@ mPictureUploadView.setUploadCallBack(this);
 其它回调逻辑详情查看demo的MainActivity<br>
 
 远程引用
->**compile 'com.github.BmobSnail:ImageUploadLibrary:1.0.0'**
+>**compile 'com.github.BmobSnail:PhotoUploadView:1.0.0'**
 
 ## 感谢
 本库依赖几个开源库
