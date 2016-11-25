@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">PictureUploadLibray</string>
+    <string name="app_name">PictureUploadView</string>
     <string name="picker_done_with_count">完成(%1$d/%2$d)</string>
     <string name="picker_over_max_count_tips">最多选择%1$d张</string>
     <string name="string_camera">拍照</string>
