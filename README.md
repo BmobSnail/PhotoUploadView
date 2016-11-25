@@ -56,7 +56,7 @@ mPictureUploadView.setUploadCallBack(this);
 其它回调逻辑详情查看demo的MainActivity<br>
 
 远程引用
->**compile 'com.github.BmobSnail:PhotoUploadView:1.0'**
+>**compile 'com.github.BmobSnail:ImageUploadLibrary:1.0.0'**
 
 ## 感谢
 本库依赖几个开源库
