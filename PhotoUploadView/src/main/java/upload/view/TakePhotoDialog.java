@@ -32,7 +32,7 @@ public class TakePhotoDialog extends MaterialDialog {
         dialogPic.findViewById(R.id.dialog_pic_camera).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mHelper.selectCropFromLocal();
+                mHelper.selectPicFromCamera();
                 dismiss();
             }
         });

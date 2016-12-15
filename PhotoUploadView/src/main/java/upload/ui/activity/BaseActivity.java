@@ -3,6 +3,7 @@ package upload.ui.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -317,5 +318,18 @@ public abstract class BaseActivity extends AppCompatActivity implements
     public View getRight() {
 
         return mRightTxt;
+    }
+
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if (requestCode == 100) {
+            if (grantResults.length > 0) {
+                showShortToast("权限申请成功");
+            } else {
+                showShortToast("权限申请失败");
+            }
+        }
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 }

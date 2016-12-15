@@ -5,8 +5,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.v4.app.Fragment;
+import android.support.v4.content.FileProvider;
 import android.text.TextUtils;
 import android.widget.Toast;
 
@@ -50,12 +53,39 @@ public class UploadPicHelper {
      * 拍照获取图片
      */
     public void selectPicFromCamera() {
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT && Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
+            if (PermissionUtil.checkLacksPermission(activity,PermissionUtil.requirePermission)) {
+                createdTempFile();
+            }
+        } else if (Build.VERSION.SDK_INT > Build.VERSION_CODES.N) {
+            if (PermissionUtil.checkLacksPermission(activity,PermissionUtil.requirePermission)) {
+                File file=new File(Environment.getExternalStorageDirectory(), "/temp/"+System.currentTimeMillis() + ".jpg");
+                if (!file.getParentFile().exists())file.getParentFile().mkdirs();
+                Uri imageUri = FileProvider.getUriForFile(context, "com.snail.upload.fileProvider", file);//通过FileProvider创建一个content类型的Uri
+                Intent intent = new Intent();
+                intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION); //添加这一句表示对目标应用临时授权该Uri所代表的文件
+                intent.setAction(MediaStore.ACTION_IMAGE_CAPTURE);//设置Action为拍照
+                intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);//将拍取的照片保存到指定URI
+                activity.startActivityForResult(intent,REQUEST_CODE_CAMERA);
+            }
+        } else {
+            createdTempFile();
+        }
+    }
+
+    private void createdTempFile() {
         String state = Environment.getExternalStorageState();
         if (state.equals(Environment.MEDIA_MOUNTED)) {
             Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-            File file = new File(PhotoUtil.copyFileToLocalPath(HexUtils.toHexString(System.currentTimeMillis() + "")));
-            file.getParentFile().mkdir();
-            Uri mOutPutFileUri = Uri.fromFile(file);
+
+            Uri mOutPutFileUri = null;
+            try {
+                File file = new File(PhotoUtil.copyFileToLocalPath(HexUtils.toHexString(System.currentTimeMillis() + "")));
+                file.getParentFile().mkdir();
+                mOutPutFileUri = Uri.fromFile(file);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 
             intent.putExtra(MediaStore.EXTRA_OUTPUT, mOutPutFileUri);
             activity.startActivityForResult(intent, REQUEST_CODE_CAMERA);
@@ -65,21 +95,13 @@ public class UploadPicHelper {
         }
     }
 
-    /**
-     * 裁剪图片
-     */
-    public void selectCropFromLocal() {
-        Intent intent = new Intent(context, PhotoPickerActivity.class);
-        intent.putExtra(PhotoPickerActivity.EXTRA_MAX_COUNT, 1);
-        intent.putExtra(PhotoPickerActivity.EXTRA_SHOW_CAMERA, true);
-        activity.startActivityForResult(intent, REQUEST_CODE_CROP);
-    }
-
     public void selectPicFromLocal(int count) {
-        Intent intent = new Intent(context, PhotoPickerActivity.class);
-        intent.putExtra(PhotoPickerActivity.EXTRA_MAX_COUNT, count);
-        intent.putExtra(PhotoPickerActivity.EXTRA_SHOW_CAMERA, false);
-        activity.startActivityForResult(intent, REQUEST_CODE_LOCAL);
+        if (PermissionUtil.checkLacksPermission(activity, PermissionUtil.requirePermission)) {
+            Intent intent = new Intent(context, PhotoPickerActivity.class);
+            intent.putExtra(PhotoPickerActivity.EXTRA_MAX_COUNT, count);
+            intent.putExtra(PhotoPickerActivity.EXTRA_SHOW_CAMERA, false);
+            activity.startActivityForResult(intent, REQUEST_CODE_LOCAL);
+        }
     }
 
     public void onResult(int requestCode, int resultCode, Intent data) {

@@ -7,6 +7,7 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Environment;
 import android.text.TextUtils;
+import android.util.Log;
 
 import upload.constant.Constant;
 
@@ -26,14 +27,14 @@ import java.util.List;
  * email：409962004@qq.com
  * TODO:
  */
-public class PhotoUtil {
+class PhotoUtil {
 
     public static final long FILE_MAX_SIZE = 80 * 1024;
 
     /**
      * 创建一个.png文件
      */
-    public static String copyFileToLocalPath(String localPath) {
+    static String copyFileToLocalPath(String localPath) {
         if (!TextUtils.isEmpty(localPath)) {
             String state = Environment.getExternalStorageState();
             if (state.equals(Environment.MEDIA_MOUNTED)) {
@@ -45,15 +46,17 @@ public class PhotoUtil {
                 return cachePath +
                         HexUtils.toHexString(localPath) +
                         ".png";
+            } else {
+                Log.i("copyfile--->","failed,no sdcard");
             }
         }
-        return null;
+        return "";
     }
 
     /**
      * 文件复制功能
      */
-    public static boolean copyFile(File inputFile, File outFile) {
+    private static boolean copyFile(File inputFile, File outFile) {
         if (inputFile == null || outFile == null)
             return false;
         if ((!inputFile.isFile()) || (!outFile.isFile()))
@@ -73,7 +76,7 @@ public class PhotoUtil {
     /**
      * 文件复制功能
      */
-    public static boolean copyFile(InputStream inputStream,OutputStream outPutStream) throws IOException {
+    private static boolean copyFile(InputStream inputStream, OutputStream outPutStream) throws IOException {
         try {
             byte[] buffer = new byte[1024];
             while (inputStream.read(buffer, 0, buffer.length) != -1) {
@@ -91,7 +94,7 @@ public class PhotoUtil {
     /**
      * 压缩图片保存副本，返回副本路径
      */
-    public static File compress(String localPath) {
+    static File compress(String localPath) {
         File outputFile = new File(localPath);
         long fileSize = outputFile.length();
         //大于80k继续压缩
@@ -136,7 +139,7 @@ public class PhotoUtil {
         return outputFile;
     }
 
-    public static List<String> getCompressList(List<String> data) {
+    static List<String> getCompressList(List<String> data) {
         List<String> images = new ArrayList<>();
         for (String path : data) {
             images.add(compress(path).getPath());
@@ -147,7 +150,7 @@ public class PhotoUtil {
     /**
      * 根据路径删除图片
      */
-    public static void deleteTempFile(String path) {
+    private static void deleteTempFile(String path) {
         File file = new File(path);
         if (file.exists()) {
             file.delete();
@@ -157,7 +160,7 @@ public class PhotoUtil {
     /**
      * 添加到图库
      */
-    public static void galleryAddPic(Context context, String path) {
+    static void galleryAddPic(Context context, String path) {
         Intent mediaScanIntent = new Intent(
                 Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
         File f = new File(path);
