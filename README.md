@@ -16,6 +16,9 @@
 - 1.修改了运行时权限判断，支持 7.0 系统的使用
 - 2.fragment 可以在 activity 的回调里面给 fragment 处理，具体参考 demo
 
+
+-------------------
+
 在 Application 中设置缓存路径
 ```java
 String cache = StorageUtils.getOwnCacheDirectory(this, "PictureUpload/photo").getAbsolutePath();
@@ -59,14 +62,9 @@ mPictureUploadView.setUploadCallBack(this);
 
 其它回调逻辑详情查看 demo 的 MainActivity<br>
 
-远程引用
->**compile 'com.github.BmobSnail:PhotoUploadView:1.0.0'**
 
-## 感谢
-本库依赖几个开源库
-- compile 'me.iwf.photopicker:PhotoPicker:0.1.8'
-- compile 'me.drakeet.materialdialog:library:1.2.8'
-- compile 'com.commit451:PhotoView:1.2.4'
-- compile 'com.github.bumptech.glide:glide:3.6.1'**
+-------------------
+远程引用
+>**com.github.BmobSnail:PhotoUploadView:1.1.0'**
 
 
