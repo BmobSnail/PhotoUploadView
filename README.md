@@ -1,7 +1,7 @@
 # PhotoUploadView 1.0.0
 
 @(图片选择、上传控件)
-**PhotoUploadView **是一个图片选择、上传的自定义控件，通过精心的设计与技术实现，简化实现逻辑，让开发更效率简单。
+**PhotoUploadView**是一个图片选择、上传的自定义控件，通过精心的设计与技术实现，简化实现逻辑，让开发更效率简单。
 
 -------------------
 #### PhotoUploadView:1.0.0：
@@ -14,10 +14,10 @@
 
 ####PhotoUploadView:1.1.0：
 - 1.修改了运行时权限判断，支持 7.0 系统的使用
-- 2.fragment 可以在 activity 的回调里面给 fragment 处理，具体参考 demo
+- 2.fragment可以在 activity 的回调里面给 fragment 处理，具体参考 demo
 
 
--------------------
+@
 
 在 Application 中设置缓存路径
 ```java
@@ -63,8 +63,8 @@ mPictureUploadView.setUploadCallBack(this);
 其它回调逻辑详情查看 demo 的 MainActivity<br>
 
 
--------------------
+@
 远程引用
->**com.github.BmobSnail:PhotoUploadView:1.1.0'**
+>** 'com.github.BmobSnail:PhotoUploadView:1.1.0' **
 
 
